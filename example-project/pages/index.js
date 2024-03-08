@@ -1,6 +1,8 @@
 import axios from "axios";
 import ProductList from "../components/products/ProductList";
 import { BASE_URL } from "../backend/backendConfig";
+import uuidGenerator from "../components/utils/uuidGenerator";
+import txnIdGenerator from "../components/utils/txnIdGenerator";
 // import { Cookies } from 'react-cookie';
 
 function HomePage(props) {
@@ -13,7 +15,8 @@ function HomePage(props) {
 // Komponentlerde çalışmaz, yalnızca pages dizini altındaki dosyalarda çalışır.
 export async function getStaticProps () { 
   try {
-    const response = await axios.get('http://localhost:3500/api/user/products'); // Örnek bir endpoint URL'si
+    const txn_id = txnIdGenerator("txn");
+    const response = await axios.get('http://localhost:7003/ExampleCMS/RetrieveCustomerProductSyncECMSReq/getProducts?transactionID=' + txn_id); // Örnek bir endpoint URL'si
     const products = response.data.products;
     return {
       props: {
