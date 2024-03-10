@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Select, Space, Switch, Modal, Upload, Button, Form, Input, InputNumber } from "antd";
-import { CheckOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import { Space, Modal, Upload, Button, Form, Input } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import Card from "../ui/Card";
 const { TextArea } = Input;
 const getBase64 = (file) =>
@@ -11,10 +11,8 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-function NewProductForm(props) {
+function NewCategoryForm(props) {
   const [selectedFile, setSelectedFile] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [isActv, setIsActv] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
@@ -60,34 +58,16 @@ function NewProductForm(props) {
 
   function formSubmitHandler(values) {
     const enteredImage = selectedFile;
-    const enteredCategory = selectedCategory;
-    const is_actv = isActv;
 
-    const productData = {
+    const categoryData = {
       name: values.name,
-      price: values.price,
       descr: values.description,
-      is_actv,
-      categoryId: enteredCategory,
-      isProduct: true,
+      isProduct: false,
       image: enteredImage
     };
 
-    props.onAddProduct(productData);
+    props.onAddCategory(categoryData);
   }
-
-  const categorySelChangeHandler = (value) => {
-    setSelectedCategory(value);
-  };
-
-  const isActvSwitchChangeHandler = (isActv) => {
-    setIsActv(isActv);
-  };
-
-  const categoryOptions = props.categories.map((category) => ({
-    value: category.id,
-    label: category.name,
-  }));
 
   return (
     <Card size="small">
@@ -109,7 +89,7 @@ function NewProductForm(props) {
         }}
         onFinish={formSubmitHandler}
       >
-        <Form.Item name="name" label="Product Name">
+        <Form.Item name="name" label="Category Name">
           <Space
             direction="vertical"
             style={{
@@ -127,34 +107,6 @@ function NewProductForm(props) {
             }}
           >
             <TextArea rows={4} />
-          </Space>
-        </Form.Item>
-        <Form.Item label="Product Category">
-          <Space
-            direction="vertical"
-            style={{
-              width: "50%",
-            }}
-          >
-            <Select
-              id="categorySelect"
-              placeholder="Please select"
-              style={{
-                width: "100%",
-              }}
-              onChange={categorySelChangeHandler}
-              options={categoryOptions}
-            />
-          </Space>
-        </Form.Item>
-        <Form.Item name="price" label="InputNumber">
-          <Space
-            direction="vertical"
-            style={{
-              width: "50%",
-            }}
-          >
-            <InputNumber />
           </Space>
         </Form.Item>
         <Form.Item label="Upload">
@@ -176,27 +128,12 @@ function NewProductForm(props) {
             />
           </Modal>
         </Form.Item>
-        <Form.Item label="Is Product Active?" valuePropName="checked">
-          <Space
-              direction="vertical"
-              style={{
-                width: "50%",
-              }}
-            >
-              <Switch
-                checked={isActv}
-                checkedChildren={<CheckOutlined />}
-                unCheckedChildren={<CloseOutlined />}
-                onChange={isActvSwitchChangeHandler}
-              />
-          </Space>
-        </Form.Item>
         <Form.Item label="" wrapperCol= {{span: 1, offset: 5,}}>
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button type="primary" htmlType="submit">Add</Button>
         </Form.Item>
       </Form>
     </Card>
   );
 }
 
-export default NewProductForm;
+export default NewCategoryForm;

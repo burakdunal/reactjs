@@ -1,30 +1,11 @@
-// import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-// import { useEffect } from "react";
 import axios from "axios";
-// import dynamic from "next/dynamic";
+import { openNotification } from "../../../components/admin/ui/Notification";
+import NewCategoryForm from "../../../components/admin/categories/NewCategoryForm";
 
-// const NewProductForm = dynamic(
-//   async () =>
-//     await import("../../../../components/admin/products/NewProductForm"),
-//   {
-//     ssr: false,
-//   }
-// );
-
-const NewCategoryPage = (props) => {
+NewCategoryForm
+const NewCategoryPage = () => {
   const router = useRouter();
-  // const isAuth = useSelector((state) => state.auth.isAuth);
-
-  // useEffect(() => {
-  //   if (!isAuth) {
-  //     return (window.location.href = "/");
-  //   }
-  // }, [isAuth]);
-
-  // if (isAuth) {
-    
-  // }
 
   const addCategoryHandler = async (enteredCategoryData) => {
     try {
@@ -36,14 +17,24 @@ const NewCategoryPage = (props) => {
       };
 
       const response = await axios.post(
-        "http://localhost:3500/api/admin/postProduct",
-        enteredProductData,
+        "http://localhost:3500/api/admin/categories/create",
+        enteredCategoryData,
         axiosConfig
       );
 
       if (response.status === 200 && response.data.status === "success") {
-        // return response.data.text;
-        router.push("/admin/products/edit-product");
+        openNotification(
+          "success",
+          "Başarılı",
+          "Kategori eklendi.",
+          1.5,
+          () => {
+            setTimeout(() => {
+              // router.push("/admin/categories/new-category");
+              router.reload();
+            }, 300);
+          }
+        );
       }
     } catch (error) {
       // if (error.response.status === 401) {
@@ -56,13 +47,22 @@ const NewCategoryPage = (props) => {
       // } else if (error.response.status === 403) {
       //   console.log("Error fetching data:", error);
       // }
-      return error;
+
+      return openNotification(
+        "error",
+        "Hata",
+        error.response.data.text,
+        0,
+        () => {}
+      );
+      // console.log("Error posting data:", error);
+      // return error;
     }
     // const result = await postProductData();
     // console.log("Form submit sonucu: " + result);
   };
 
-  // return <NewProductForm onAddProduct={addProductHandler} />;
+  return <NewCategoryForm onAddCategory={addCategoryHandler} />;
 
 };
 

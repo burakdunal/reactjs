@@ -87,11 +87,12 @@ function EditProductForm(props) {
 
     const productData = {
       name: enteredName,
-      image: enteredImage,
       price: enteredPrice,
       descr: enteredDescription,
       is_actv,
       categoryId: enteredCategory,
+      isProduct: true,
+      image: enteredImage
     };
 
     props.onEditProduct(productData);
