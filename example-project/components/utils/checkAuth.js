@@ -24,7 +24,6 @@ const checkAuth = () => {
           setIsAuth(true);
         } else {
           store.dispatch(authActions.logout());
-          console.log("oturum yok");
         }
       } catch (error) {
         console.log(error);
