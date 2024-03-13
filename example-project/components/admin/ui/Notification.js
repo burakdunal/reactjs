@@ -4,7 +4,7 @@ export const openNotification = async (type, title, description, duration, close
   notification[type]({
     message: title,
     description: description,
-    placement: 'top',
+    placement: 'top', //topRight
     duration,
     // closeIcon,
     onClose: closeFn

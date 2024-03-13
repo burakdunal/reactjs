@@ -150,6 +150,12 @@ const ListCategories = (props) => {
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
+      title: "Product Count",
+      dataIndex: "pcount",
+      ...getColumnSearchProps("pcount"),
+      sorter: (a, b) => a.name.localeCompare(b.name),
+    },
+    {
       title: "Creation Date",
       dataIndex: "cdate",
       ...getColumnSearchProps("cdate"),
@@ -197,6 +203,7 @@ const ListCategories = (props) => {
   const categoryData = props.categories.map((category) => ({
     key: category.id,
     name: category.name,
+    pcount: category.productCount,
     cdate: category.createdAt,
   }));
 

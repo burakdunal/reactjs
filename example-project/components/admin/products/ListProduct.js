@@ -219,7 +219,7 @@ const ListProduct = (props) => {
     key: product.id,
     name: product.name,
     price: product.price,
-    category: product.categories[0].name,
+    category: product.categories[0] && product.categories[0].name ? product.categories[0].name : "Kategorisiz",
     is_actv:
       product.is_actv == 1 ? (
         <Tag bordered={false} color="success" value="Active">

@@ -29,7 +29,7 @@ function EditProductForm(props) {
   const [enteredName, setEnteredName] = useState(props.productData.name);
   const [enteredDescription, setEnteredDescription] = useState(props.productData.descr);
   const [selectedFile, setSelectedFile] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(props.productData.prodCatId);
+  const [selectedCategory, setSelectedCategory] = useState(props.productData.prodCatId !== null ? props.productData.prodCatId : null);
   const [isActv, setIsActv] = useState(props.productData.isActv);
   const [enteredPrice, setEnteredPrice] = useState(props.productData.price);
 

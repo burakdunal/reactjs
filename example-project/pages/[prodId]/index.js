@@ -1,6 +1,6 @@
 import axios from "axios";
 import ProductDetail from "../../components/products/ProductDetail";
-import { BASE_URL } from "../../backend/backendConfig";
+import { BACK_BASE_URL } from "../../config/urlConfig";
 
 const ProductDetails = (props) => {
   return (
@@ -47,7 +47,7 @@ export async function getStaticProps(context) {
           price: product.price,
           descr: product.descr,
         },
-        base_url: BASE_URL
+        base_url: BACK_BASE_URL
       },
       revalidate: 10, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
     };

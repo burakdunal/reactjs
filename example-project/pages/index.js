@@ -1,6 +1,6 @@
 import axios from "axios";
 import ProductList from "../components/products/ProductList";
-import { BASE_URL } from "../backend/backendConfig";
+import { BACK_BASE_URL } from "../config/urlConfig";
 // import { Cookies } from 'react-cookie';
 
 function HomePage(props) {
@@ -18,7 +18,7 @@ export async function getStaticProps () {
     return {
       props: {
         products,
-        base_url: BASE_URL
+        base_url: BACK_BASE_URL
       },
       revalidate: 2 // kaç saniyede bir yeni datayı dahil etsin.
     }

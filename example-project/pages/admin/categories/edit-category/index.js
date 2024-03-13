@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../../../backend/backendConfig";
+import { BACK_BASE_URL } from "../../../../config/urlConfig";
 import axios from "axios";
 import { useRouter } from "next/router";
 import deleteConfirm from "../../../../components/admin/ui/deleteConfirm";
@@ -10,7 +10,7 @@ ListCategories
 const ListCategoriesPage = (props) => {
   const router = useRouter();
   const removeCategoryHandler = async (categoryId) => {
-    deleteConfirm(categoryId, () => {
+    deleteConfirm('categories', categoryId, () => {
       router.push("/admin/categories/edit-category");
     });
   };
@@ -25,7 +25,7 @@ export async function getStaticProps () {
     return {
       props: {
         categories,
-        base_url: BASE_URL
+        base_url: BACK_BASE_URL
       },
       revalidate: 2 // kaç saniyede bir yeni datayı dahil etsin.
     }

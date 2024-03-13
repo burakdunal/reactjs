@@ -30,8 +30,8 @@ const NewCategoryPage = () => {
           1.5,
           () => {
             setTimeout(() => {
-              // router.push("/admin/categories/new-category");
-              router.reload();
+              router.push("/admin/categories/edit-category");
+              // router.reload();
             }, 300);
           }
         );

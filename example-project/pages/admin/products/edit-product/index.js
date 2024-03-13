@@ -1,5 +1,5 @@
 import ListProduct from "../../../../components/admin/products/ListProduct";
-import { BASE_URL } from "../../../../backend/backendConfig";
+import { BACK_BASE_URL } from "../../../../config/urlConfig";
 import axios from "axios";
 import { useRouter } from "next/router";
 import deleteConfirm from "../../../../components/admin/ui/deleteConfirm";
@@ -9,7 +9,7 @@ import deleteConfirm from "../../../../components/admin/ui/deleteConfirm";
 const ListProductPage = (props) => {
   const router = useRouter();
   const removeProductHandler = async (prodId) => {
-    deleteConfirm(prodId, () => {
+    deleteConfirm('products', prodId, () => {
       router.push("/admin/products/edit-product");
     });
   };
@@ -24,7 +24,7 @@ export async function getStaticProps () {
     return {
       props: {
         products,
-        base_url: BASE_URL
+        base_url: BACK_BASE_URL
       },
       revalidate: 2 // kaç saniyede bir yeni datayı dahil etsin.
     }

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { BASE_URL } from "../../../../backend/backendConfig";
+import { BACK_BASE_URL } from "../../../../config/urlConfig";
 import axios from "axios";
 import EditProductForm from "../../../../components/admin/products/EditProductForm";
 import { openNotification } from "../../../../components/admin/ui/Notification";
@@ -72,7 +72,7 @@ const EditProductPage = (props) => {
   };
 
   const removeProductHandler = async (prodId) => {
-    deleteConfirm(prodId, () => {
+    deleteConfirm('products', prodId, () => {
       router.push("/admin/products/edit-product");
     });
   };
@@ -127,10 +127,10 @@ export async function getStaticProps(context) {
           price: product.price,
           descr: product.descr,
           isActv: product.is_actv,
-          prodCatId: product.categories[0].id,
+          prodCatId: product.categories[0] && product.categories[0].id ? product.categories[0].id : null,
         },
         categories,
-        base_url: BASE_URL,
+        base_url: BACK_BASE_URL,
       },
       revalidate: 2, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
     };
