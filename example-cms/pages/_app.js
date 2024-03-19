@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "../store";
 import SiteLayout from "../components/layout/SiteLayout";
 import { useRouter } from "next/router";
+import { BACK_BASE_URL } from "../config/urlConfig";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -47,11 +48,12 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
-      <SiteLayout>
         {/* Conditional rendering based on isAdmin */}
         {isAdmin ? (
           isAntDesignLoaded ? (
-            <Component {...pageProps} />
+            <SiteLayout back_base_url={BACK_BASE_URL}>
+              <Component {...pageProps} />
+            </SiteLayout>
           ) : (
             <div>Loading Ant Design...</div>
           )
@@ -94,7 +96,6 @@ const MyApp = ({ Component, pageProps }) => {
         ) : (
           <div>Loading Material Kit...</div>
         )}
-      </SiteLayout>
     </Provider>
   );
 };

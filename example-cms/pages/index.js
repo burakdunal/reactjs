@@ -86,7 +86,7 @@ function IndexPage(props) {
 export async function getStaticProps() {
   try {
     const response = await axios.get(
-      "http://localhost:3500/api/user/categories"
+      BACK_BASE_URL + "api/user/categories"
     );
     const categories = response.data.categories;
     return {

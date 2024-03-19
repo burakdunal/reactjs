@@ -18,7 +18,7 @@ const EditProductPage = (props) => {
       };
 
       const response = await axios.post(
-        "http://localhost:3500/api/admin/products/edit/" + prodId,
+        BACK_BASE_URL + "api/admin/products/edit/" + prodId,
         editedProductData,
         axiosConfig
       );
@@ -91,7 +91,7 @@ const EditProductPage = (props) => {
 export async function getStaticPaths() {
   // fallback false paths dizini desteklenen tüm prodId değerlerine sahip olduğunu belirtir. Bu sayede dizide olmayan bir id ile gelinir ise 404 görünür.
   try {
-    const response = await axios.get("http://localhost:3500/api/user/products"); // Örnek bir endpoint URL'si
+    const response = await axios.get(BACK_BASE_URL + "api/user/products"); // Örnek bir endpoint URL'si
     const products = response.data.products;
 
     return {
@@ -109,12 +109,12 @@ export async function getStaticProps(context) {
   const prodId = context.params.prodId;
   try {
     const prodResponse = await axios.get(
-      "http://localhost:3500/api/admin/products/" + prodId
+      BACK_BASE_URL + "api/admin/products/" + prodId
     ); // Örnek bir endpoint URL'si
     const product = prodResponse.data.product;
 
     const categoriesResponse = await axios.get(
-      "http://localhost:3500/api/admin/categories"
+      BACK_BASE_URL + "api/admin/categories"
     ); // Örnek bir endpoint URL'si
     const categories = categoriesResponse.data.categories;
 

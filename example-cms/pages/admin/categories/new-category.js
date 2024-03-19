@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { openNotification } from "../../../components/admin/ui/Notification";
 import NewCategoryForm from "../../../components/admin/categories/NewCategoryForm";
+import { BACK_BASE_URL } from "../../../config/urlConfig";
 
 NewCategoryForm
 const NewCategoryPage = () => {
@@ -17,7 +18,7 @@ const NewCategoryPage = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3500/api/admin/categories/create",
+        BACK_BASE_URL + "api/admin/categories/create",
         enteredCategoryData,
         axiosConfig
       );
