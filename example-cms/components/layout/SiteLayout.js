@@ -171,20 +171,6 @@ function SiteLayout(props) {
           <DesktopOutlined />,
           "/admin"
         ),
-        getItem(
-          <Link
-            href="/admin/test"
-            onClick={(e) => {
-              e.preventDefault();
-              checkAuthFetch("/admin/test");
-            }}
-          >
-            Test
-          </Link>,
-          "2",
-          <VideoCameraOutlined />,
-          "/admin/test"
-        ),
         getItem("Product Management", "sub1", <UserOutlined />, "products", [
           getItem(
             <Link

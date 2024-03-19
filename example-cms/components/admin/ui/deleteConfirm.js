@@ -2,6 +2,7 @@ import axios from "axios";
 import { openConfirmModal } from "./confirmModal";
 import { openNotification } from "./Notification";
 import { checkProdsConfirmModal, confirmModalCloseHandler } from "./checkProdsConfirmModal";
+import { BACK_BASE_URL } from "../../../config/urlConfig";
 
 const deleteConfirm = async (del_op, obj_id, onAfterDelete) => {
   openConfirmModal(
@@ -18,13 +19,13 @@ const deleteConfirm = async (del_op, obj_id, onAfterDelete) => {
         if (del_op === "products") {
           requestData = { obj_id };
           response = await axios.post(
-            `http://localhost:3500/api/admin/${del_op}/delete/${obj_id}`,
+            `${BACK_BASE_URL}api/admin/${del_op}/delete/${obj_id}`,
             requestData,
             axiosConfig
           );
         } else if (del_op === "categories") {
           response = await axios.get(
-            `http://localhost:3500/api/admin/${del_op}/delete/${obj_id}`,
+            `${BACK_BASE_URL}api/admin/${del_op}/delete/${obj_id}`,
             axiosConfig
           );
         }
@@ -49,7 +50,7 @@ const deleteConfirm = async (del_op, obj_id, onAfterDelete) => {
             async () => {
               try {
                 const catDelWithChildsResponse = await axios.post(
-                  `http://localhost:3500/api/admin/categories/delete/${obj_id}`,
+                  `${BACK_BASE_URL}api/admin/categories/delete/${obj_id}`,
                   {
                     childs: true,
                   },
@@ -84,7 +85,7 @@ const deleteConfirm = async (del_op, obj_id, onAfterDelete) => {
             async () => {
               try {
                 const catDelWithoutChildsResponse = await axios.post(
-                  `http://localhost:3500/api/admin/categories/delete/${obj_id}`,
+                  `${BACK_BASE_URL}api/admin/categories/delete/${obj_id}`,
                   {
                     childs: false,
                   },
@@ -125,7 +126,7 @@ const deleteConfirm = async (del_op, obj_id, onAfterDelete) => {
         ) {
           try {
             const catDelResponse = await axios.post(
-              `http://localhost:3500/api/admin/categories/delete/${obj_id}`,
+              `${BACK_BASE_URL}api/admin/categories/delete/${obj_id}`,
               { childs: false },
               axiosConfig
             );
