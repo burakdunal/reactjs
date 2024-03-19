@@ -17,7 +17,6 @@ import axios from "axios";
 import { Cookies } from "react-cookie";
 import { authActions } from "../../store/auth";
 import checkAuth from "../utils/checkAuth";
-import MainNavigation from "./MainNavigation";
 import classes from "./SiteLayout.module.css";
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -136,7 +135,7 @@ function SiteLayout(props) {
         cookies.remove("checkToken");
         cookies.remove("user");
         dispatch(authActions.logout());
-        window.location.href = "/";
+        window.location.href = "http://localhost:3000";
       }
     } catch (error) {
       if (error.response.status === 401) {
@@ -534,19 +533,13 @@ function SiteLayout(props) {
       );
     } else {
       layout = (
-        <div>
-          <MainNavigation />
-          <main className={classes.main}>{props.children}</main>
-        </div>
+        <div>{props.children}</div>
       );
     }
     
   } else {
     layout = (
-      <div>
-        <MainNavigation />
-        <main className={classes.main}>{props.children}</main>
-      </div>
+      <div>{props.children}</div>
     );
   }
 

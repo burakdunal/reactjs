@@ -37,3 +37,9 @@ example-project/.env.local
 example-project/.next/
 section_23_app1/build/
 section_25_app1/.next/
+example-cms/node_modules
+example-cms/.env
+example-cms/.env.development
+example-cms/.env.local
+example-cms/.next/
+
