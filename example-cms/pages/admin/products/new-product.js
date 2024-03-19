@@ -4,6 +4,7 @@ import NewProductForm from "../../../components/admin/products/NewProductForm";
 // import { useEffect } from "react";
 import axios from "axios";
 import { openNotification } from "../../../components/admin/ui/Notification";
+import { BACK_BASE_URL } from "../../../config/urlConfig";
 // import dynamic from "next/dynamic";
 
 // const NewProductForm = dynamic(
@@ -38,7 +39,7 @@ const NewProductPage = (props) => {
       };
 
       const response = await axios.post(
-        "http://localhost:3500/api/admin/products/create",
+        BACK_BASE_URL + "api/admin/products/create",
         enteredProductData,
         axiosConfig
       );
@@ -80,7 +81,7 @@ const NewProductPage = (props) => {
 export async function getStaticProps() {
   try {
     const response = await axios.get(
-      "http://localhost:3500/api/admin/categories"
+      BACK_BASE_URL + "api/admin/categories"
     ); // Örnek bir endpoint URL'si
 
     if (response.status === 200 && response.data.status === "success") {

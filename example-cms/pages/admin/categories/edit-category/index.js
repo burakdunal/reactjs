@@ -20,7 +20,7 @@ const ListCategoriesPage = (props) => {
 
 export async function getStaticProps () { 
   try {
-    const response = await axios.get('http://localhost:3500/api/user/categories'); // Örnek bir endpoint URL'si
+    const response = await axios.get(BACK_BASE_URL + 'api/user/categories'); // Örnek bir endpoint URL'si
     const categories = response.data.categories;
     return {
       props: {

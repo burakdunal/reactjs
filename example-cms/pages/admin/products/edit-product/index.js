@@ -19,7 +19,7 @@ const ListProductPage = (props) => {
 
 export async function getStaticProps () { 
   try {
-    const response = await axios.get('http://localhost:3500/api/user/products'); // Örnek bir endpoint URL'si
+    const response = await axios.get(BACK_BASE_URL + 'api/user/products'); // Örnek bir endpoint URL'si
     const products = response.data.products;
     return {
       props: {

@@ -18,7 +18,7 @@ const EditCategoryPage = (props) => {
       };
 
       const response = await axios.post(
-        "http://localhost:3500/api/admin/categories/edit/" + categoryId,
+        BACK_BASE_URL + "api/admin/categories/edit/" + categoryId,
         editedCategoryData,
         axiosConfig
       );
@@ -91,7 +91,7 @@ const EditCategoryPage = (props) => {
 export async function getStaticPaths() {
   // fallback false paths dizini desteklenen tüm prodId değerlerine sahip olduğunu belirtir. Bu sayede dizide olmayan bir id ile gelinir ise 404 görünür.
   try {
-    const response = await axios.get("http://localhost:3500/api/user/categories"); // Örnek bir endpoint URL'si
+    const response = await axios.get(BACK_BASE_URL + "api/user/categories"); // Örnek bir endpoint URL'si
     const categories = response.data.categories;
 
     return {
@@ -109,7 +109,7 @@ export async function getStaticProps(context) {
   const categoryId = context.params.categoryId;
   try {
     const categoryResponse = await axios.get(
-      "http://localhost:3500/api/admin/categories/" + categoryId
+      BACK_BASE_URL + "api/admin/categories/" + categoryId
     );
     const category = categoryResponse.data.category;
     return {

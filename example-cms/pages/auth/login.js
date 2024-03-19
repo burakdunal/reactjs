@@ -23,10 +23,12 @@ import styles from "/styles/jss/nextjs-material-kit/pages/loginPage.js";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/auth";
+import { BACK_BASE_URL } from "../../config/urlConfig";
 
 const useStyles = makeStyles(styles);
 
 function LoginPage(props) {
+  const back_base_url = props.back_base_url;
   const dispatch = useDispatch();
   const emailInputRef = useRef();
   const passInputRef = useRef();
@@ -42,7 +44,8 @@ function LoginPage(props) {
     const enteredPass = passInputRef.current.value;
     const loginResponse = await fetchLogin(
       enteredEmail,
-      enteredPass
+      enteredPass,
+      back_base_url
     );
     if (loginResponse === "success") {
       dispatch(authActions.login());
@@ -162,10 +165,10 @@ function LoginPage(props) {
   );
 }
 
-const fetchLogin = async (email, password) => {
+const fetchLogin = async (email, password, back_base_url) => {
   try {
     const response = await axios.post(
-      "http://localhost:3500/api/account/login",
+      back_base_url + "api/account/login",
       {
         email,
         password,
@@ -194,5 +197,17 @@ const fetchLogin = async (email, password) => {
     }
   }
 };
+
+export async function getStaticProps() {
+  try {
+    return {
+      props: {
+        back_base_url: BACK_BASE_URL
+      }
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
 
 export default LoginPage;

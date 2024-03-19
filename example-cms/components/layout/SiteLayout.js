@@ -18,6 +18,7 @@ import { Cookies } from "react-cookie";
 import { authActions } from "../../store/auth";
 import checkAuth from "../utils/checkAuth";
 import classes from "./SiteLayout.module.css";
+import { BACK_BASE_URL } from "../../config/urlConfig";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -51,7 +52,7 @@ function SiteLayout(props) {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const { isAuthCheckedForInit, isAuth } = checkAuth(); // Auth kontrolü ve durumunu alıyoruz
+  const { isAuthCheckedForInit, isAuth } = checkAuth(BACK_BASE_URL); // Auth kontrolü ve durumunu alıyoruz
   // setIsAuthCheckedForInitVar(isAuthCheckedForInit);
   // setIsAuthForInitVar(isAuth);
 
@@ -102,7 +103,7 @@ function SiteLayout(props) {
       };
 
       const response = await axios.get(
-        "http://localhost:3500/api/account/check-auth",
+        BACK_BASE_URL + "api/account/check-auth",
         axiosConfig
       );
       console.log("checkAuth çalıştı 2");
@@ -126,7 +127,7 @@ function SiteLayout(props) {
   const logoutHandler = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3500/api/account/logout",
+        BACK_BASE_URL + "api/account/logout",
         {
           withCredentials: true,
         }
@@ -152,8 +153,9 @@ function SiteLayout(props) {
   };
 
   let layout;
-  if (isAuth) {
-    if (currentPath.startsWith("/admin")) {
+
+  // if (isAuth) {
+    // if (currentPath.startsWith("/admin")) {
       const items = [
         getItem(
           <Link
@@ -531,17 +533,17 @@ function SiteLayout(props) {
           </Layout>
         </Layout>
       );
-    } else {
-      layout = (
-        <div>{props.children}</div>
-      );
-    }
+    // } else {
+    //   layout = (
+    //     <div>{props.children}</div>
+    //   );
+    // }
     
-  } else {
-    layout = (
-      <div>{props.children}</div>
-    );
-  }
+  // } else {
+  //   layout = (
+  //     <div>{props.children}</div>
+  //   );
+  // }
 
   return layout;
 }
