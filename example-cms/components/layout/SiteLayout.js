@@ -136,7 +136,7 @@ function SiteLayout(props) {
         cookies.remove("checkToken");
         cookies.remove("user");
         dispatch(authActions.logout());
-        window.location.href = "http://localhost:3000";
+        window.location.href = "/";
       }
     } catch (error) {
       if (error.response.status === 401) {
