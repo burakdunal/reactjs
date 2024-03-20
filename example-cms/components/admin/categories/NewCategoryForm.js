@@ -115,6 +115,7 @@ function NewCategoryForm(props) {
             fileList={fileList}
             onPreview={handlePreview}
             onChange={handleUploadChange}
+            action={'/api/noop'}
           >
             {fileList.length >= 1 ? null : uploadButton}
           </Upload>
