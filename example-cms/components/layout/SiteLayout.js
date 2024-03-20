@@ -62,7 +62,8 @@ function SiteLayout(props) {
   }
 
   if (!isAuth && currentPath.startsWith("/admin")) {
-    return (window.location.href = "/");
+    // return (window.location.href = "/");
+    return;
   }
 
   // if (isAuth) {
