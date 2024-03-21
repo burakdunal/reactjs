@@ -142,7 +142,7 @@ export async function getStaticProps(context) {
         back_base_url: BACK_BASE_URL,
         front_base_url: FRONT_BASE_URL,
       },
-      // revalidate: 1, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
+      revalidate: 1, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
     };
   } catch (error) {
     console.error("Error fetching data:", error);

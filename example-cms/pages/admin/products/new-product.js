@@ -90,7 +90,7 @@ export async function getStaticProps() {
         props: {
           categories,
         },
-        // revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
+        revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
       };
     } else {
       categories = { id: 0, name: "Kategori bulunamadı" };
@@ -98,7 +98,7 @@ export async function getStaticProps() {
         props: {
           categories,
         },
-        // revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
+        revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
       };
     }
     

@@ -102,7 +102,7 @@ export async function getStaticProps() {
         categories,
         base_url: BACK_BASE_URL,
       },
-      // revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
+      revalidate: 1, // kaç saniyede bir yeni datayı dahil etsin.
     };
   } catch (error) {
     console.error("Error fetching data:", error);
