@@ -108,7 +108,7 @@ export async function getStaticPaths() {
     const categories = response.data.categories;
 
     return {
-      fallback: "blocking",
+      fallback: true,
       paths: categories.map((category) => ({
         params: { categoryId: category.id.toString() },
       })),
