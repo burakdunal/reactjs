@@ -26,7 +26,7 @@ export async function getStaticProps () {
         products,
         base_url: BACK_BASE_URL
       },
-      revalidate: 2 // kaç saniyede bir yeni datayı dahil etsin.
+      revalidate: 3 // kaç saniyede bir yeni datayı dahil etsin.
     }
   } catch (error) {
     console.error('Error fetching data:', error);

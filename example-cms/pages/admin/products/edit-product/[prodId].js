@@ -95,7 +95,7 @@ export async function getStaticPaths() {
     const products = response.data.products;
 
     return {
-      fallback: false,
+      fallback: "blocking",
       paths: products.map((product) => ({
         params: { prodId: product.id.toString() },
       })),
@@ -132,7 +132,7 @@ export async function getStaticProps(context) {
         categories,
         base_url: BACK_BASE_URL,
       },
-      revalidate: 2, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
+      revalidate: 3, // belirtilen süre içerisinde yeni bir istek gelirse tetiklenir
     };
   } catch (error) {
     console.error("Error fetching data:", error);
