@@ -133,10 +133,11 @@ function SiteLayout(props) {
         }
       );
       if (response.status === 200 && response.data.status === "success") {
-        cookies.remove("checkToken");
-        cookies.remove("user");
+        cookies.remove("checkToken", {path: "/", domain: ".inadayapp.com"});
+        cookies.remove("user", {path: "/", domain: ".inadayapp.com"});
         dispatch(authActions.logout());
         window.location.href = "/";
+        return;
       }
     } catch (error) {
       if (error.response.status === 401) {
