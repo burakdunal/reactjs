@@ -68,14 +68,14 @@ function Hero({user, backendEndpoint}) {
             >
               {user.about}
             </Typography>
-            <div className="mb-8 flex justify-center gap-4 lg:justify-start">
+            {/* <div className="mb-8 flex justify-center gap-4 lg:justify-start">
               <Link target="_blank" href={`http://localhost:3500/${user.resumeUrl}`}>
                 <Button variant="outlined" className="flex items-center gap-3">
                   <ArrowDownTrayIcon className="h-6 w-6 text-black" />
                   ÖZGEÇMİŞİM
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </Card>
         </div>
       </div>
