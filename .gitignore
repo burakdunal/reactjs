@@ -42,4 +42,9 @@ example-cms/.env
 example-cms/.env.development
 example-cms/.env.local
 example-cms/.next/
+personal-portfolio/.next/
+personal-portfolio/.env*
+personal-portfolio/node_modules/
+personal-portfolio/public/
+personal-portfolio_antDesignOncesi/
 

@@ -94,7 +94,7 @@ export async function getStaticProps() {
         categories,
         base_url: BACK_BASE_URL,
       },
-      revalidate: 5,
+      revalidate: 1,
     };
   } catch (error) {
     return {
