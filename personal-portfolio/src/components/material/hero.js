@@ -12,7 +12,7 @@ import Link from "next/link";
 
 function Hero({user, backendEndpoint}) {
   return (
-    <header className="!flex h-[55vh] w-full items-center justify-between px-10 hero-mb">
+    <header className="!flex h-[55vh] w-full items-center justify-between lg:px-10 sm:px-3 hero-mb lg:mt-0 sm:mt-44">
       <Image
         id="giris"
         width={1200}
@@ -26,8 +26,8 @@ function Hero({user, backendEndpoint}) {
       <div className="container mx-auto mt-28">
         <div className="grid grid-cols-12 text-center lg:text-left">
           <Card className="col-span-full rounded-xl border border-white bg-white/90 py-10 p-8 shadow-lg shadow-black/10 backdrop-blur-sm backdrop-saturate-200 xl:col-span-7">
-            <div className="flex flex-col gap-6">
-              <div className="flex gap-4">
+            <div className="flex flex-col md:flex-row lg:flex-row gap-6">
+              <div className="flex flex-col sm:items-center md:flex-row lg:flex-row gap-4">
                 <Image
                   width={1024}
                   height={1024}
