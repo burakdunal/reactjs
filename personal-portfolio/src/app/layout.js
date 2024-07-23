@@ -63,6 +63,7 @@ export default function RootLayout({ children }) {
             crossOrigin="anonymous"
             referrerPolicy="no-referrer"
           />
+          <script type="text/javascript" src="/new-relic/js-snippet.js"></script>
         </head>
         <body>
         {isAdmin ? (
