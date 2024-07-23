@@ -12,7 +12,7 @@ import {
 
 export function ContactForm({ formData, handleChange, onSubmitForm }) {
   return (
-    <section id="iletisim" className="px-8 mt-24">
+    <section id="iletisim" className="lg:px-8 sm:px-4 mt-24">
       <div className="container mx-auto mb-5 md:mb-20 text-center">
         <Typography variant="h1" color="blue-gray" className="mb-4">
           Bana Ulaşın!
@@ -21,8 +21,8 @@ export function ContactForm({ formData, handleChange, onSubmitForm }) {
           Özel ders almak için veya herhangi bir konu ile ilgili bana ulaşabilirsiniz.
         </Typography>
       </div>
-      <div className="flex container mx-auto justify-center">
-        <Card shadow={true} className="border border-gray/50" style={{ width: "60%" }}>
+      <div className="flex container lg:mx-auto sm:mx-0 justify-center">
+        <Card shadow={true} className="border border-gray/50 lg:w-3/5 sm:w-full">
           <CardBody className="grid grid-cols-1 md:p-10 lg:grid-cols-1 md:gap-28">
             <div className="w-full mt-8 md:mt-0 md:px-10 h-full p-5">
               <form onSubmit={onSubmitForm}>
