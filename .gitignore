@@ -42,4 +42,6 @@ example-cms/.env
 example-cms/.env.development
 example-cms/.env.local
 example-cms/.next/
-
+**/node_modules/
+**/.next/
+**/images/
